@@ -8,7 +8,7 @@ import { Review } from '../../models/review-model';
 import { ReviewService } from '../../../services/ReviewService';
 import { RouterModule } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-import { environment } from '../../../environments/environments.prod';
+import { environment } from '../../../environments/environments';
 
 declare var bootstrap: any;
 

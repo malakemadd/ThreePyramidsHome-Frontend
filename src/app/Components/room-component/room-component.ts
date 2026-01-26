@@ -6,7 +6,7 @@ import { RoomService } from '../../../services/RoomService';
 import { FormsModule } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { ChangeDetectorRef } from '@angular/core';
-import { environment } from '../../../environments/environments.prod';
+import { environment } from '../../../environments/environments';
 @Component({
   selector: 'app-room-component',
   imports: [CommonModule,RouterModule,FormsModule],
