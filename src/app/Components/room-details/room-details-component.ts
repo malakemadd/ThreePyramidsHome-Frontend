@@ -8,6 +8,7 @@ import { Review } from '../../models/review-model';
 import { ReviewService } from '../../../services/ReviewService';
 import { RouterModule } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+import { environment } from '../../../environments/environments';
 
 declare var bootstrap: any;
 
@@ -32,9 +33,10 @@ export class RoomDetailsComponent implements OnInit {
 
 
   // Backend
-  backendBaseUrl = 'https://localhost:7256';
-
-  // Shared Facilities (frontend-only)
+  
+ private apiUrl = environment.apiUrl;
+ private domainOnly = environment.apiUrl.replace('/api', '');
+  // Shared Facilities
   sharedFacilities = [
     {
       name: 'Shared Kitchen',
@@ -77,7 +79,7 @@ export class RoomDetailsComponent implements OnInit {
 
   if (token) {
     this.http.get(
-      'https://localhost:7256/api/Room/validate-admin',
+      `${this.apiUrl}/Room/validate-admin`,
       {
         headers: {
           Authorization: `Bearer ${token}`
@@ -104,7 +106,7 @@ export class RoomDetailsComponent implements OnInit {
 
   // Room Images
   getImageUrl(imageUrl?: string): string {
-    return imageUrl ? `${this.backendBaseUrl}${imageUrl}` : '';
+    return imageUrl ? `${this.domainOnly}${imageUrl}` : '';
   }
 deleteReview(reviewId: number): void {
   if (!confirm('Delete this review?')) return;
@@ -112,7 +114,7 @@ deleteReview(reviewId: number): void {
   const token = localStorage.getItem('admin_token');
 
   this.http.delete(
-    `https://localhost:7256/api/Review/Delete/${reviewId}`,
+    `${this.apiUrl}/Review/Delete/${reviewId}`,
     {
       headers: {
         Authorization: `Bearer ${token}`
@@ -129,7 +131,7 @@ deleteReview(reviewId: number): void {
 
   getRoomImageUrl(room: any): string {
     if (room.roomImages && room.roomImages.length > 0) {
-      return this.backendBaseUrl + room.roomImages[0].imageUrl;
+      return this.domainOnly + room.roomImages[0].imageUrl;
     }
     return 'room.jpeg'; 
   }

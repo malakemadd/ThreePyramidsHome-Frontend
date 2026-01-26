@@ -3,34 +3,34 @@ import { HttpClient } from '@angular/common/http';
 import { map, Observable, tap } from 'rxjs';
 import { Room } from '../app/models/room-model';
 import { Review } from '../app/models/review-model';
+import { environment } from '../environments/environments';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ReviewService {
 
-  private apiUrlReview = 'https://localhost:7256/api/Review';
-
+  private apiUrl = `${environment.apiUrl}/Review`;
   constructor(private http: HttpClient) {}
 
   getReviews(): Observable<Review[]> {
-     return this.http.get<Review[]>(`${this.apiUrlReview}/GetAllReviews`);
+     return this.http.get<Review[]>(`${this.apiUrl}/GetAllReviews`);
   }
 
    getReviewbyId(id: number): Observable<Review> {
-     return this.http.get<Review>(`${this.apiUrlReview}/${id}`);
+     return this.http.get<Review>(`${this.apiUrl}/${id}`);
   }
 
   addReview(review: any): Observable<any> {
-  return this.http.post(`${this.apiUrlReview}/AddReview`, review);
+  return this.http.post(`${this.apiUrl}/AddReview`, review);
 }
   
 
   updateReview(id: number, review: Review): Observable<any> {
-    return this.http.put(`${this.apiUrlReview}/Update/${id}`, review);
+    return this.http.put(`${this.apiUrl}/Update/${id}`, review);
   }
   deleteReview(id: number) {
-    return this.http.delete(`${this.apiUrlReview}/Delete/${id}`);
+    return this.http.delete(`${this.apiUrl}/Delete/${id}`);
   }
  
 

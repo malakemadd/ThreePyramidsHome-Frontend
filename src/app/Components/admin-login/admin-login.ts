@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { environment } from '../../../environments/environments.prod';
 
 @Component({
   selector: 'app-admin-login',
@@ -11,7 +12,7 @@ import { FormsModule } from '@angular/forms';
   styleUrls: ['./admin-login.css'],
 })
 export class AdminLoginComponent {
-
+private apiUrl = environment.apiUrl;
   username = '';
   password = '';
 
@@ -21,7 +22,7 @@ export class AdminLoginComponent {
   ) {}
 
   login() {
-    this.http.post<any>('https://localhost:7256/api/Room/admin-login', {
+    this.http.post<any>(`${this.apiUrl}/Room/admin-login`, {
       username: this.username,
       password: this.password
     }).subscribe({

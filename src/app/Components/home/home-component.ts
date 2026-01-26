@@ -5,6 +5,7 @@ import { ActivatedRoute, RouterModule } from '@angular/router';
 import { Room } from '../../models/room-model';
 import { RoomService } from '../../../services/RoomService';
 import { ReviewService } from '../../../services/ReviewService';
+import { environment } from '../../../environments/environments';
 
 @Component({
   selector: 'app-home-component',
@@ -16,7 +17,8 @@ import { ReviewService } from '../../../services/ReviewService';
 export class HomeComponent implements AfterViewInit {
   lat: number = 29.977722162474198;
   lng: number = 31.102350396190168;
- backendUrl = 'https://localhost:7256'; 
+
+ private apiUrl = environment.apiUrl;
  
 
   rooms: Room[] = []; 
@@ -56,7 +58,9 @@ constructor(
   }
   getRoomImageUrl(room: any): string {
   if (room.roomImages && room.roomImages.length > 0) {
-    return this.backendUrl + room.roomImages[0].imageUrl;
+    const domainOnly = this.apiUrl.replace('/api', ''); 
+      return domainOnly + room.roomImages[0].imageUrl;
+    //return this.backendUrl + room.roomImages[0].imageUrl;
   }
   return '1.jpeg';  
 }

@@ -5,7 +5,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterModule,ActivatedRoute,Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-
+import { environment } from '../../../environments/environments';
 @Component({
   selector: 'app-admin-dashboard-component',
   templateUrl: './admin-dashboard-component.html',
@@ -20,7 +20,7 @@ export class AdminDashboardComponent implements OnInit {
   showForm = false;
   selectedImageFile: File[]  = [];
   previewUrls: string[] = [];
- backendBaseUrl = 'https://localhost:7256';
+ private apiUrl = environment.apiUrl;
 
 
   constructor(private roomService: RoomService, private cdr: ChangeDetectorRef, private router: Router,private ngZone: NgZone,private route: ActivatedRoute,private http: HttpClient) {}
@@ -34,7 +34,7 @@ export class AdminDashboardComponent implements OnInit {
   }
 
   this.http.get(
-    'https://localhost:7256/api/Room/validate-admin',
+    `${this.apiUrl}/Room/validate-admin`,
     {
       headers: {
         Authorization: `Bearer ${token}`
@@ -145,7 +145,7 @@ private denyAccess() {
   }
    getRoomImageUrl(room: any): string {
   if (room.roomImages && room.roomImages.length > 0) {
-    return this.backendBaseUrl + room.roomImages[0].imageUrl;
+    return this.apiUrl + room.roomImages[0].imageUrl;
   }
   return 'room.jpeg'; 
 }

@@ -6,6 +6,7 @@ import { RoomService } from '../../../services/RoomService';
 import { FormsModule } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { ChangeDetectorRef } from '@angular/core';
+import { environment } from '../../../environments/environments';
 @Component({
   selector: 'app-room-component',
   imports: [CommonModule,RouterModule,FormsModule],
@@ -45,11 +46,14 @@ loadRooms() {
       error: err => console.error(err)
     });
   }
- backendBaseUrl = 'https://localhost:7256';
+
+private apiUrl = environment.apiUrl;
  getRoomImageUrl(room: any): string {
   
   if (room.roomImages && room.roomImages.length > 0) {
-    return this.backendBaseUrl + room.roomImages[0].imageUrl;
+    const domainOnly = this.apiUrl.replace('/api', ''); 
+      return domainOnly + room.roomImages[0].imageUrl;
+    //return this.backendBaseUrl + room.roomImages[0].imageUrl;
   }
   return '1.jpeg'; 
 }

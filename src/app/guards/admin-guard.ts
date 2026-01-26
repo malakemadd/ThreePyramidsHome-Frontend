@@ -3,9 +3,11 @@ import { CanActivate, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
+import { environment } from '../../environments/environments';
 
 @Injectable({ providedIn: 'root' })
 export class AdminGuard implements CanActivate {
+private apiUrl = environment.apiUrl;
 
   constructor(
     private router: Router,
@@ -22,7 +24,7 @@ export class AdminGuard implements CanActivate {
     }
 
     return this.http.get(
-      'https://localhost:7256/api/Room/validate-admin',
+      `${this.apiUrl}/Room/validate-admin`,
       {
         headers: { Authorization: `Bearer ${token}` }
       }
