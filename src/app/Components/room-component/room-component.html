@@ -1,0 +1,36 @@
+<header class="rooms-hero">
+  <div class="rooms-hero-overlay text-center text-white">
+    <div class="container" data-aos="fade-up">
+      <h1 class="display-3 mb-2">Our Rooms</h1>
+      <p class="lead">Experience luxury and comfort steps away from the Pyramids</p>
+    </div>
+  </div>
+</header>
+
+<section class="rooms-section container py-5">
+  <div class="row g-4 mt-2">
+    <div class="col-md-4" *ngFor="let room of rooms$ | async">
+      <div class="card room-card shadow-hover h-100 border-0">
+        
+        <div class="image-zoom-container">
+          <img [src]="getRoomImageUrl(room)" class="card-img-top" [alt]="room.name">
+          <div class="price-tag">{{ room.price }}$ per person</div>
+          <div class="price-tag">Up to 4 Persons</div>
+        </div>
+
+        <div class="card-body p-4 text-center">
+          <h5 class="card-title fw-bold">{{ room.name }}</h5>
+          <p class="card-text text-muted small mb-4">{{ room.description }}</p>
+          
+          <div class="mt-auto">
+            <button class="btn btn-outline-gold w-100" [routerLink]="['/room', room.id]">
+              Explore Room
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+

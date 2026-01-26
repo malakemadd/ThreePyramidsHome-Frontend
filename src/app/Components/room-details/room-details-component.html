@@ -1,0 +1,206 @@
+<section class="room-details container" *ngIf="room">
+  <div class="room-main">
+
+    <!-- Room Image Gallery -->
+    <div class="image-gallery" *ngIf="room?.roomImages?.length">
+      <div class="main-image position-relative">
+        <button class="nav prev" (click)="prevImage()" aria-label="Previous image">‹</button>
+        <img
+          [src]="getImageUrl(room.roomImages[currentImageIndex]?.imageUrl)"
+          [alt]="room.name"
+        />
+        <button class="nav next" (click)="nextImage()" aria-label="Next image">›</button>
+      </div>
+
+      <div class="thumbnails d-flex gap-2 mt-2">
+        <button
+          *ngFor="let img of room.roomImages; index as i"
+          [class.active]="i === currentImageIndex"
+          (click)="selectImage(i)"
+          [attr.aria-label]="'Show image ' + (i + 1)"
+        >
+          <img [src]="getImageUrl(img.imageUrl)" [alt]="room.name + ' thumbnail ' + (i + 1)" />
+        </button>
+      </div>
+    </div>
+
+    <!-- Amenities Section -->
+   <!-- Shared Gallery Modal -->
+<div class="modal fade" id="sharedGalleryModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">{{ sharedFacilities[currentSharedIndex]?.name }}</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body text-center">
+        <img
+          [src]="currentSharedImages[currentSharedIndex]"
+          class="img-fluid rounded"
+          [alt]="sharedFacilities[currentSharedIndex]?.name"
+        />
+      </div>
+      <div class="modal-footer justify-content-between">
+        <button type="button" class="btn btn-outline-secondary" (click)="prevSharedImage()">‹ Prev</button>
+        <button type="button" class="btn btn-outline-secondary" (click)="nextSharedImage()">Next ›</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+    <!-- Room Description -->
+    <div class="description-content mt-4">
+      <h3>About this room</h3>
+      <p class="text-description">{{ room.description }}</p>
+    </div>
+<!-- Amenities Section -->
+<section class="amenities-section mt-4">
+  <h3 class="fw-bold mb-3">Amenities</h3>
+
+  <div class="amenities-list d-flex flex-wrap gap-2">
+    <span class="amenity">✔ Air Conditioning</span>
+    <span class="amenity">✔ TV</span>
+    <span class="amenity">✔ Capacity: up to {{ room.capacity }} persons</span>
+    <span class="amenity">✔ {{ room.price }}$ per person</span>
+  </div>
+</section>
+
+    <!-- Shared Facilities Section -->
+    <section class="shared-facilities mt-5">
+      <h3 class="fw-bold text-gold mb-4">Shared Facilities</h3>
+
+      <div class="card shared-area-card h-100 p-4 shadow-sm rounded-4 text-center">
+        <div class="card-icon mb-3 fs-2">🏢</div>
+        <h5 class="fw-bold">Guest Shared Space</h5>
+        <p class="text-muted small mb-2">
+          All guests have access to the following shared facilities:
+        </p>
+        <ul class="list-unstyled text-start mb-3">
+          <li>✔ Fully equipped shared kitchen</li>
+          <li>✔ Dining area</li>
+          <li>✔ Beverage corner</li>
+          <li>✔ Laundry area</li>
+        </ul>
+
+        <div class="d-flex flex-wrap gap-2 justify-content-center mt-3">
+          <img src="kitchen1.jpeg" width="200" height="170" class="rounded shadow-sm" style="object-fit: cover;">
+          <img src="3.jpeg" width="200" height="170" class="rounded shadow-sm" style="object-fit: cover;">
+          <img src="4.jpeg" width="200" height="170" class="rounded shadow-sm" style="object-fit: cover;">
+          <!-- <img src="7.jpeg" width="150" height="100" class="rounded shadow-sm" style="object-fit: cover;"> -->
+        </div>
+
+        <!-- View More / Gallery Link -->
+        <button class="btn btn-outline-gold mt-3" (click)="openSharedGallery(0)">
+          View All Shared Facility Images
+        </button>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- Reservation & Review Sidebar -->
+  <aside class="mt-5">
+    <!-- Reservation CTA -->
+    <div class="reservation-cta card mb-4">
+      <h3>Interested in this room?</h3>
+      <p>
+        Loved what you seee? Contact us to check availability or reserve this room.
+      </p>
+      <a
+        class="btn primary full"
+        [routerLink]="['/contact']"
+        [queryParams]="{ room: room.name }"
+        aria-label="Contact us to reserve this room"
+      >
+        Contact us to reserve
+      </a>
+      <a class="cta-secondary" [routerLink]="['/contact']">
+        Have a question? Get in touch →
+      </a>
+    </div>
+
+    <!-- Review Form -->
+    <div class="review-form card mt-3"> 
+      <h4>Add a Review</h4> 
+      <div class="form-row"> 
+        <label> Name 
+          <input type="text" [(ngModel)]="newReview.author" placeholder="Your name" /> 
+        </label> 
+        <label> Rating 
+          <div class="rating-input" role="radiogroup" aria-label="Select rating"> 
+            <button type="button" *ngFor="let r of [1,2,3,4,5]" class="star" [class.filled]="r <= newReview.rating" (click)="newReview.rating = r" [attr.aria-label]="'Rate ' + r + ' stars'" >★</button> 
+          </div>
+        </label> 
+      </div>
+      <label> Comment 
+        <textarea [(ngModel)]="newReview.comment" placeholder="Write your review"></textarea> 
+      </label>
+      <button class="btn primary mt-2" [disabled]="!newReview.author || !newReview.comment" (click)="addReview()">Submit Review</button>
+    </div>
+  </aside>
+
+  <!-- Reviews Section -->
+  <section class="reviews-section mt-4">
+    <div class="reviews-header">
+      <h3>Reviews</h3> 
+      <div class="reviews-summary" *ngIf="room?.reviews?.length"> 
+        
+        <div class="stars" aria-label="Average rating"> 
+          <ng-container *ngFor="let s of [1,2,3,4,5]"> 
+            <span class="star" [class.filled]="s <= averageRatingRounded">★ </span> 
+          </ng-container> 
+        </div>
+        <span class="avg">{{ averageRating | number:'1.1-1' }}</span> 
+        <span class="count">({{ room.reviews.length }} reviews)</span> 
+      </div> 
+    </div> 
+
+    <div *ngIf="room?.reviews?.length ; else noReviews" class="reviews-list"> 
+     <article class="review-card" *ngFor="let review of paginatedReviews">
+  <div class="review-top d-flex align-items-center">
+    <div class="avatar">
+      {{ review.reviewerName?.charAt(0) | uppercase }}
+    </div>
+
+    <div class="meta ms-2">
+      <strong class="author">{{ review.reviewerName }}</strong>
+      <span class="date">{{ review.createdAt | date:'mediumDate' }}</span>
+    </div>
+
+    <div class="rating ms-auto">
+      <ng-container *ngFor="let s of [1,2,3,4,5]">
+        <span class="star" [class.filled]="s <= review.rating">★</span>
+      </ng-container>
+    </div>
+
+    <!-- ✅ ADMIN DELETE BUTTON -->
+    <button
+      *ngIf="isAdmin"
+      class="btn btn-sm btn-danger ms-2"
+      (click)="deleteReview(review.id)"
+      title="Delete review"
+    >
+      🗑
+    </button>
+  </div>
+
+  <p class="comment">{{ review.comment }}</p>
+</article>
+
+
+      <!-- Pagination Controls -->
+      <div class="pagination custom-pagination d-flex justify-content-center align-items-center mt-4" *ngIf="totalPages > 1">
+        <button class="btn btn-outline-secondary me-2" (click)="prevPage()" [disabled]="currentPage === 1">‹ Prev</button>
+        <button *ngFor="let page of [].constructor(totalPages); let i = index" class="btn btn-outline-primary mx-1" [class.active]="currentPage === i + 1" (click)="goToPage(i + 1)">
+          {{ i + 1 }}
+        </button>
+        <button class="btn btn-outline-secondary ms-2" (click)="nextPage()" [disabled]="currentPage === totalPages">Next ›</button>
+      </div>
+    </div>
+
+    <ng-template #noReviews> 
+      <p class="muted">No reviews yet. Be the first to share your experience!</p> 
+    </ng-template> 
+  </section>
+</section>

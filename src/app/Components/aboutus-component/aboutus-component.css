@@ -1,0 +1,69 @@
+/* Variables (Ensure these are in your global styles or top of file) */
+:root {
+  --gold: #c59d5f;
+  --light-gold: #fdfaf5;
+  --dark: #2c2c2c;
+}
+
+.gold-text { color: var(--gold); }
+.bg-soft-gold { background-color: var(--light-gold); }
+.border-gold { border-color: var(--gold) !important; }
+
+/* ABOUT HERO */
+.about-hero {
+  height: 60vh;
+  background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), 
+              url('/view.jpeg') center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.about-hero h1 {
+  font-family: 'Gravitas One', serif;
+  text-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+}
+
+/* STORY SECTION */
+.about-img {
+  transition: transform 0.6s ease;
+}
+
+.image-zoom-container {
+  overflow: hidden;
+  height: 400px;
+}
+
+.image-zoom-container:hover .about-img {
+  transform: scale(1.05);
+}
+
+.highlight-box {
+  border-radius: 0 10px 10px 0;
+}
+
+/* TEAM CARDS */
+.team-card {
+  border-radius: 20px;
+  transition: all 0.3s ease;
+}
+
+.team-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.1) !important;
+}
+
+.team-img-wrapper img {
+  width: 140px;
+  height: 140px;
+  object-fit: cover;
+  border: 4px solid white;
+}
+
+.shadow-hover {
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.tracking-widest {
+  letter-spacing: 0.2em;
+}

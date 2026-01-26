@@ -1,0 +1,169 @@
+
+/* ACTION CARDS */
+.action-card {
+  border-radius: 20px;
+  background: #fff;
+  transition: all 0.3s ease;
+}
+
+.action-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+}
+
+/* WHATSAPP CARD */
+.primary-card {
+  border: 2px solid rgba(37, 211, 102, 0.25);
+  background: linear-gradient(180deg, #f3fff7, #ffffff);
+}
+
+/* MESSENGER CARD */
+.messenger-card {
+  border: 2px solid rgba(59, 89, 152, 0.25);
+  background: linear-gradient(180deg, #e8f0ff, #ffffff);
+}
+
+/* EMAIL CARD */
+.email-card {
+  border: 2px solid rgba(197, 157, 95, 0.25);
+  background: linear-gradient(180deg, #fff7e5, #ffffff);
+}
+
+/* CALL CARD */
+.call-card {
+  border: 2px solid rgba(255, 99, 71, 0.25);
+  background: linear-gradient(180deg, #fff2f0, #ffffff);
+}
+.location-link {
+  color: #c59d5f;  /* gold to match brand */
+  text-decoration: underline;
+  font-weight: 600;
+}
+
+.location-link:hover {
+  color: #a8843f;
+}
+
+
+/* CARD ICONS */
+.card-icon {
+  font-size: 2.5rem;
+   line-height: 1;
+  display: inline-block;
+}
+
+/* WhatsApp icon color */
+.whatsapp i {
+  color: #25d366; 
+}
+
+.facebook i,
+.messenger-card .card-icon i {
+  color: #0084ff; 
+}
+
+
+/* BUTTONS */
+.btn-whatsapp {
+  background: #25d366;
+  color: #fff;
+  font-weight: 600;
+  border-radius: 10px;
+  padding: 0.6rem 1.5rem;
+}
+
+.btn-whatsapp:hover {
+  background: #1ebe5d;
+}
+
+.btn-messenger {
+  background: #3b5998;
+  color: #fff;
+  font-weight: 600;
+  border-radius: 10px;
+  padding: 0.6rem 1.5rem;
+}
+
+.btn-messenger:hover {
+  background: #2d4373;
+}
+
+.btn-email {
+  background: #c59d5f;
+  color: #fff;
+  font-weight: 600;
+  border-radius: 10px;
+  padding: 0.6rem 1.5rem;
+}
+
+.btn-email:hover {
+  background: #a8843f;
+}
+
+.btn-call {
+  background: #ff6347;
+  color: #fff;
+  font-weight: 600;
+  border-radius: 10px;
+  padding: 0.6rem 1.5rem;
+}
+
+.btn-call:hover {
+  background: #e5533d;
+}
+
+
+
+
+/* BUTTONS */
+.btn-outline-gold {
+  border: 2px solid #c59d5f;
+  color: #c59d5f;
+  font-weight: 600;
+  border-radius: 10px;
+  padding: 0.6rem 1.5rem;
+}
+
+.btn-outline-gold:hover {
+  background: #c59d5f;
+  color: #fff;
+}
+
+.btn-whatsapp {
+  background: #25d366;
+  color: #fff;
+  font-weight: 600;
+  border-radius: 10px;
+  padding: 0.6rem 1.5rem;
+}
+
+.btn-whatsapp:hover {
+  background: #1ebe5d;
+}
+
+/* TRUST BAR */
+.bg-soft-gold {
+  background: linear-gradient(135deg, #f8f1e4, #fff);
+}
+
+.info-item {
+  font-size: 0.95rem;
+  color: #4a3720;
+}
+
+.info-item strong {
+  color: #3b2a18;
+}
+
+.info-item.highlight strong {
+  color: #a8843f;
+}
+
+
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .contact-hero {
+    height: 35vh;
+  }
+}

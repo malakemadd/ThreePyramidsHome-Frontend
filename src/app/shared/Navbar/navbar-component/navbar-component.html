@@ -1,0 +1,49 @@
+<nav class="navbar glass-navbar navbar-expand-lg" [class.scrolled]="isScrolled">
+  <div class="container">
+
+    <!-- Logo -->
+    <a class="navbar-brand" routerLink="/home">
+      <img src="/3pyramidslogo-transparent.png" alt="Chicify Logo" class="logo" />
+    </a>
+
+    <!-- Mobile toggle button -->
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNav"
+      aria-controls="navbarNav"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Links -->
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav mx-auto nav-underline">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/home" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+            Home
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/room" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+            Rooms
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/aboutus" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+            About Us
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/contact" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+            Contact
+          </a>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+</nav>

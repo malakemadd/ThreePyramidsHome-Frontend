@@ -1,0 +1,54 @@
+.site-footer {
+  background: rgba(0, 0, 0, 0.85);
+  color: #fff;
+  font-family: 'Poppins', sans-serif;
+  letter-spacing: 0.5px;
+}
+
+.site-footer h3 {
+  font-family: 'Gravitas One', sans-serif;
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+}
+
+.site-footer .tagline {
+  font-size: 1rem;
+  color: #d1d5db;
+}
+
+.site-footer .social-icons a {
+  color: #fff;
+  font-size: 1.4rem;
+  margin: 0 0.5rem;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.site-footer .social-icons a:hover {
+  color: #c59d5f;
+  transform: scale(1.1);
+}
+
+.site-footer .contact-info p {
+  font-size: 0.95rem;
+  margin: 0.5rem 0;
+}
+
+.site-footer .footer-note {
+  color: #9ca3af;
+  margin-top: 1rem;
+}
+
+@media (max-width: 768px) {
+  .site-footer .social-icons a {
+    font-size: 1.2rem;
+    margin: 0 0.4rem;
+  }
+
+  .site-footer h3 {
+    font-size: 1.5rem;
+  }
+
+  .site-footer .tagline {
+    font-size: 0.95rem;
+  }
+}

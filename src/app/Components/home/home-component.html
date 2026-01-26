@@ -1,0 +1,70 @@
+<header class="hero">
+  <div class="hero-overlay text-center text-white d-flex align-items-center justify-content-center flex-column">
+    <div class="container" data-aos="fade-up">
+      <h1 class="display-3 mb-3">Where Timeless Egypt <br> Meets Modern Comfort</h1>
+      <p class="lead mb-4">Three Pyramids Home · Boutique Luxury steps away from the Great Giza Plateau</p>
+      <button class="btn btn-Explore shadow-lg" [routerLink]="['/room']">Explore Our Rooms</button>
+    </div>
+  </div>
+</header>
+
+<section class="experience py-5 mt-5">
+  <div class="container text-center">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <span class="text-uppercase tracking-widest gold-text">A Stay to Remember</span>
+        <h2 class="display-5 mb-4">Experience Ancient Wonders from Your Window</h2>
+        <p class="text-muted">At Three Pyramids Home, we blend the rich history of Egypt with the high-end amenities of a boutique hotel. Whether you're here for the sunrise over the Sphinx or a peaceful retreat after exploring, we provide the perfect sanctuary.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="rooms" class="rooms-section container py-5">
+  <div class="d-flex justify-content-between align-items-end mb-5">
+    <div>
+      <h2 class="mb-0">Our Curated Rooms</h2>
+      <p class="text-muted">Handpicked comfort for the global traveler.</p>
+    </div>
+    <a [routerLink]="['/room']" class="btn btn-link gold-text text-decoration-none">View All Rooms →</a>
+  </div>
+
+  <div class="row g-4">
+    <div class="col-md-4" *ngFor="let room of rooms.length>3 ? rooms.slice(0,3) : rooms" data-aos="fade-up">
+      <div class="card shadow-hover h-100 border-0">
+       <div class="image-zoom-container">
+  <img [src]="getRoomImageUrl(room)" class="card-img-top" [alt]="room.name">
+  <div class="price-tag">{{room.price | currency}} / Person</div>
+</div>
+        <div class="card-body p-4 text-center">
+          <h5 class="card-title fw-bold">{{room.name}}</h5>
+          <p class="card-text text-muted small">All rooms include shared facilities.</p>
+          <a [routerLink]="['/room', room.id]" class="btn btn-outline-gold w-100">View Details</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="map-section" class="py-5 bg-soft-gold">
+  <div class="container">
+    <div class="row align-items-center">
+      
+      <div class="col-md-4 mb-4 mb-md-0" data-aos="fade-right">
+        <span class="gold-text text-uppercase fw-bold small">Location</span>
+        <h2 class="display-6 mb-3">Visit Us in Giza</h2>
+        <p class="text-muted">We are located just minutes away from the Great Pyramid entrance, offering the perfect balance of proximity and peace.</p>
+        
+        <ul class="list-unstyled mt-4">
+          <li class="mb-3"><strong>📍 Address:</strong> Al Haram, Giza Governorate, Egypt</li>
+          <li class="mb-3"><strong>☎ Phone:</strong> +20 111 022 2520</li>
+        </ul>
+      </div>
+
+      <div class="col-md-8" data-aos="fade-left">
+        <div id="hotelMap" class="shadow-lg rounded-4 border border-white border-4"></div>
+      </div>
+
+    </div>
+  </div>
+</section>

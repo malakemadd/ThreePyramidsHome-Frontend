@@ -1,0 +1,115 @@
+<div class="admin-layout bg-light min-vh-100 p-4">
+  <div class="container-fluid">
+    <!-- Header -->
+    <div class="d-flex justify-content-between align-items-center mb-4">
+      <h2 class="fw-bold m-0">Rooms Management</h2>
+      <button *ngIf="!showForm" class="btn btn-gold px-4 shadow-sm" (click)="toggleAddForm()">
+        + Add New Room
+      </button>
+    </div>
+<!-- Rooms Table -->
+<div class="card border-0 shadow-sm">
+  <div class="table-responsive">
+    <table class="table align-middle mb-0">
+      <thead class="bg-light">
+        <tr>
+          <th class="ps-4">Room</th>
+          <th>Price</th>
+          <th>Capacity</th>
+          <th class="text-end pe-4">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let room of rooms">
+          <td class="ps-4">
+            <div class="d-flex align-items-center">
+            
+             <img
+        [src]="getRoomImageUrl(room)"
+        class="rounded me-3 shadow-sm"
+        width="60"
+        height="45"
+        style="object-fit: cover;"
+      />
+              <span class="fw-bold">{{ room.name }}</span>
+            </div>
+          </td>
+          <td class="text-gold fw-bold">{{ room.price | currency }}</td>
+          <td>{{ room.capacity }} Guests</td>
+          <td class="text-end pe-4">
+            <button class="btn btn-sm btn-outline-primary me-2" (click)="toggleEditForm(room)">Edit</button>
+            <button class="btn btn-sm btn-outline-danger" (click)="deleteRoom(room.id)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- No rooms fallback -->
+    <div *ngIf="rooms.length === 0" class="p-5 text-center text-muted">
+      No rooms found. Click "Add New Room" to begin.
+    </div>
+  </div>
+</div>
+
+    <!-- Form -->
+<div *ngIf="showForm" class="card border-0 shadow-sm mb-5">
+  <div class="card-header bg-white border-0 pt-4 px-4">
+    <h4 class="fw-bold text-gold">{{ isEditMode ? 'Edit' : 'Add New' }} Room Details</h4>
+  </div>
+  <div class="card-body p-4">
+    <form #roomForm="ngForm" (ngSubmit)="saveRoom()">
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label class="form-label fw-bold small">Room Name</label>
+          <input type="text" class="form-control" [(ngModel)]="currentRoom.name" name="name" >
+        </div>
+        <div class="col-md-3 mb-3">
+          <label class="form-label fw-bold small">Price</label>
+          <input type="number" class="form-control" [(ngModel)]="currentRoom.price" name="price" >
+        </div>
+        <div class="col-md-3 mb-3">
+          <label class="form-label fw-bold small">Capacity</label>
+          <input type="number" class="form-control" [(ngModel)]="currentRoom.capacity" name="capacity" >
+        </div>
+        <div class="col-12 mb-3">
+          <label class="form-label fw-bold small">Description</label>
+          <textarea class="form-control" [(ngModel)]="currentRoom.description" name="description" rows="2"></textarea>
+        </div>
+        <div class="col-12 mb-3 d-flex align-items-center gap-2">
+          <input type="checkbox" [(ngModel)]="currentRoom.isAvailable" name="isAvailable" id="isAvailable">
+          <label for="isAvailable" class="form-label fw-bold small mb-0">Is Available</label>
+        </div>
+      </div>
+     <div class="col-12 mb-3">
+  <label class="form-label fw-bold small">Room Images (Select multiple)</label>
+  <input #fileInput type="file" class="form-control" accept="image/*" multiple (change)="onFileSelected($event)">
+</div>
+
+        <!-- Preview -->
+      <div class="col-12 mb-3" *ngIf="previewUrls.length > 0">
+  <label class="form-label fw-bold small">Selected Images ({{selectedImageFile.length}})</label>
+  <div class="d-flex flex-wrap gap-3">
+    <div *ngFor="let url of previewUrls; let i = index" class="position-relative">
+      <img [src]="url" class="rounded shadow-sm border" width="120" height="90" style="object-fit: cover;">
+      
+      <button type="button" 
+        (click)="removeImage(i)"
+        class="btn btn-danger btn-sm position-absolute top-0 start-100 translate-middle rounded-circle p-1"
+        style="width: 24px; height: 24px; line-height: 12px; font-size: 10px;">
+        ✕
+      </button>
+    </div>
+  </div>
+</div>
+
+      <!-- Submit / Cancel buttons -->
+      <div class="d-flex gap-2 mt-3">
+        <button type="submit" class="btn btn-gold px-5" [disabled]="!roomForm.valid">
+          {{ isEditMode ? 'Update Room' : 'Save New Room' }}
+        </button>
+        <button type="button" class="btn btn-light px-4" (click)="cancelForm()">Cancel</button>
+      </div>
+    </form>
+  </div>
+</div>
+
