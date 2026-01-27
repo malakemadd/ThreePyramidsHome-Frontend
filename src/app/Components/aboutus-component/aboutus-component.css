@@ -17,11 +17,27 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: height 0.3s ease;
 }
 
 .about-hero h1 {
   font-family: 'Gravitas One', serif;
   text-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+}
+/* Tablets and Mobile */
+@media (max-width: 1000px) {
+  .about-hero {
+    height: 20vh; /* Shrinks the container height */
+    background-position: center center; 
+    
+  }
+}
+
+/* Small Phones */
+@media (max-width: 480px) {
+  .about-hero {
+    height: 20vh; /* Even smaller for tiny screens */
+  }
 }
 
 /* STORY SECTION */
