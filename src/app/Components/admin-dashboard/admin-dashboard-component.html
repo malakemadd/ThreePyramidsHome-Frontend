@@ -34,12 +34,19 @@
               <span class="fw-bold">{{ room.name }}</span>
             </div>
           </td>
-          <td class="text-gold fw-bold">{{ room.price | currency }}</td>
-          <td>{{ room.capacity }} Guests</td>
-          <td class="text-end pe-4">
-            <button class="btn btn-sm btn-outline-primary me-2" (click)="toggleEditForm(room)">Edit</button>
-            <button class="btn btn-sm btn-outline-danger" (click)="deleteRoom(room.id)">Delete</button>
-          </td>
+       <td data-label="Price" class="text-gold fw-bold">{{ room.price | currency }}</td>
+<td data-label="Capacity">{{ room.capacity }} Guests</td>
+
+<td data-label="Actions" class="text-end pe-4">
+  <div class="d-flex justify-content-end gap-2 d-md-inline-flex w-100 justify-content-md-end">
+    <button class="btn btn-sm btn-outline-primary" (click)="toggleEditForm(room)">
+      Edit
+    </button>
+    <button class="btn btn-sm btn-outline-danger" (click)="deleteRoom(room.id)">
+      Delete
+    </button>
+  </div>
+</td>
         </tr>
       </tbody>
     </table>

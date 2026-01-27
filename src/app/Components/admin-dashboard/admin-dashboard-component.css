@@ -1,43 +1,139 @@
 :host {
   --gold: #c59d5f;
-  --dark-gold: #a8843f;
-  --soft-gold: #fdfaf5;
+  --dark: #2c2c2c;
+  --bg-light: #f4f7f6;
 }
 
-
-.text-gold { color: var(--gold); }
-.btn-gold { background-color: var(--gold); color: white; border: none; font-weight: 600; }
-.btn-gold:hover:not(:disabled) { background-color: var(--dark-gold); transform: translateY(-1px); }
-.btn-gold:disabled { background-color: #d8c4a5; opacity: 0.7; cursor: not-allowed; }
-
-.btn-outline-gold { color: var(--gold); border: 2px solid var(--gold); font-weight: 600; }
-.btn-outline-gold:hover { background: var(--gold); color: white; }
-
-.tracking-widest { letter-spacing: 3px; }
-
-/* Table Styling */
-.custom-table thead th {
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  color: #666;
+.admin-layout {
+  background-color: var(--bg-light);
+  min-height: 100vh;
+  padding: 2rem;
+  font-family: 'Inter', sans-serif;
 }
 
-.btn-edit { color: #2563eb; background: #2563eb11; border: none; padding: 6px 16px; border-radius: 6px; }
-.btn-edit:hover { background: #2563eb; color: white; }
-
-.btn-delete { color: #dc2626; background: #dc262611; border: none; padding: 6px 16px; border-radius: 6px; }
-.btn-delete:hover { background: #dc2626; color: white; }
-
-/* Animations */
-.animate-in {
-  animation: slideUp 0.4s ease-out;
+/* Header Styling */
+.admin-layout h2 {
+  color: var(--dark);
+  position: relative;
+  padding-bottom: 10px;
 }
 
-@keyframes slideUp {
-  from { opacity: 0; transform: translateY(15px); }
-  to { opacity: 1; transform: translateY(0); }
+.btn-gold {
+  background-color: var(--gold);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: all 0.3s ease;
 }
 
-.x-small { font-size: 0.7rem; }
-.image-upload-zone img { max-height: 200px; }
+.btn-gold:hover:not(:disabled) {
+  background-color: #a8843f;
+  box-shadow: 0 4px 12px rgba(197, 157, 95, 0.4);
+}
+
+/* Card Styling */
+.card {
+  border: none;
+  border-radius: 16px;
+  overflow: hidden;
+  margin-bottom: 2rem;
+}
+
+/* TABLE RESPONSIVE LOGIC */
+@media (max-width: 992px) {
+  .table-responsive {
+    border: none;
+  }
+
+  .table thead {
+    display: none; /* Hide headers on small screens */
+  }
+
+  .table tbody tr {
+    display: block;
+    background: #fff;
+    border: 1px solid #edf2f7;
+    border-radius: 12px;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+  }
+
+  .table td {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: none;
+    padding: 0.5rem 0;
+    text-align: right;
+  }
+
+  /* Create labels using data-label attribute */
+  .table td::before {
+    content: attr(data-label);
+    font-weight: 600;
+    color: #718096;
+    font-size: 0.85rem;
+    text-align: left;
+  }
+
+  .table td:first-child {
+    justify-content: center;
+    border-bottom: 1px solid #f1f5f9;
+    margin-bottom: 100px;
+    padding-bottom: 20px;
+  }
+
+  .table td:first-child::before { display: none; } /* Hide 'Room' label */
+  
+  .table td:last-child {
+    justify-content: center;
+    border-top: 1px solid #f1f5f9;
+    margin-top: 10px;
+    padding-top: 15px;
+  }
+}
+
+/* Form Controls */
+.form-control {
+  border: 1.5px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 10px 15px;
+}
+
+.form-control:focus {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(197, 157, 95, 0.1);
+}
+
+/* Image Upload Previews */
+.preview-container img {
+  border-radius: 10px;
+  transition: transform 0.2s;
+}
+
+.preview-container img:hover {
+  transform: scale(1.05);
+}
+
+/* Mobile Header Tweak */
+@media (max-width: 576px) {
+  .admin-layout { padding: 1rem; }
+
+  /* Specifically target the buttons in the form footer */
+  .d-flex.gap-2.mt-3 .btn {
+    padding: 6px 16px !important; 
+    font-size: 0.85rem;           
+    width: auto !important;   
+    flex: 0 1 auto;               
+  }
+
+  .d-flex.justify-content-between {
+    flex-direction: column;
+    align-items: stretch !important;
+    gap: 1rem;
+  }
+  
+  h2 { font-size: 1.5rem; text-align: center; }
+}

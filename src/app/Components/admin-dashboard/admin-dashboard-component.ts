@@ -145,7 +145,9 @@ private denyAccess() {
   }
    getRoomImageUrl(room: any): string {
   if (room.roomImages && room.roomImages.length > 0) {
-    return this.apiUrl + room.roomImages[0].imageUrl;
+     const domainOnly = this.apiUrl.replace('/api', ''); 
+      return domainOnly + room.roomImages[0].imageUrl;
+    
   }
   return 'room.jpeg'; 
 }
@@ -163,6 +165,6 @@ removeImage(index: number) {
   this.previewUrls.splice(index, 1);
 }
   getRoomImage(room: Room): string {
-    return room.roomImages?.length ? room.roomImages[0].imageUrl : '/assets/default-room.jpg';
+    return room.roomImages?.length ? room.roomImages[0].imageUrl : '4.jpeg';
   }
 }
