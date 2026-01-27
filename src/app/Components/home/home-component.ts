@@ -31,7 +31,7 @@ constructor(
   ngAfterViewInit(): void {
    this.roomService.getRooms().subscribe({
       next: (data) => {
-        this.rooms = data;
+        this.rooms = data.slice(0, 2);
         this.cdr.detectChanges();
       }
     });
