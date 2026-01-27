@@ -67,8 +67,8 @@ content: '';
    Horizontal Layout
 ========================= */
 .navbar-nav {
-  display: flex !important;
-  flex-direction: row !important;
+  display: flex ;
+  flex-direction: row ;
   gap: 2rem;
   align-items: center;
 }
@@ -78,7 +78,8 @@ content: '';
 ========================= */
 @media (max-width: 992px) {
   .navbar-nav {
-    flex-direction: column !important;
+    flex-direction: column;
+    
     text-align: center;
     gap: 1rem;
   }

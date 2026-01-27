@@ -3,12 +3,27 @@
   height: 60vh;
   /* Matching homepage gradient and overlay style */
   background: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), 
-              url('/outdoor.jpeg') center/cover no-repeat;
+              url('/view.jpeg') center/cover no-repeat;
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: height 0.3s ease;
+}
+/* Tablets and Mobile */
+@media (max-width: 1000px) {
+  .rooms-hero {
+    height: 20vh; /* Shrinks the container height */
+    background-position: center center; 
+    
+  }
 }
 
+/* Small Phones */
+@media (max-width: 480px) {
+  .rooms-hero {
+    height: 20vh; /* Even smaller for tiny screens */
+  }
+}
 .rooms-hero h1 {
   font-family: 'Gravitas One', serif;
   text-shadow: 2px 2px 10px rgba(0,0,0,0.3);

@@ -16,7 +16,7 @@
 }
 /* HERO SECTION */
 .hero {
-  height: 100vh;
+  height: 90vh;
   /* Use 'linear-gradient' to create a dark tint over the image */
   background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), 
               url('/outdoor.jpeg') center/cover no-repeat;

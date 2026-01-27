@@ -31,7 +31,7 @@
 
 .image-zoom-container {
   overflow: hidden;
-  height: 400px;
+  height: 350px;
 }
 
 .image-zoom-container:hover .about-img {
