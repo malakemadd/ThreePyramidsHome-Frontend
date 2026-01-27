@@ -67,6 +67,17 @@
   transform: scale(1.05);
 }
 
+/* Specific adjustment for mobile view */
+@media (max-width: 767px) {
+  .hero {
+    /* Adjust the 50% (Horizontal) to move the image left or right 
+       50% is center, 0% is far left, 100% is far right */
+    background-position: 60% center !important;
+    
+    /* This ensures the image doesn't scale too small */
+    background-size: cover;
+  }
+}
 
 /* ROOM CARDS */
 .image-zoom-container {
