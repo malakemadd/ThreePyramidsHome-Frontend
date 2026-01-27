@@ -66,20 +66,7 @@
   background-color: #a8843f;
   transform: scale(1.05);
 }
-/* Specific adjustment for mobile view */
-@media (max-width: 767px) {
-  .hero {
-    /* Ensures the image stays centered even when the sides are cropped */
-    background-position: center center !important;
-    
-    /* Optional: reduce height on mobile if 100vh feels too long */
-    height: 80vh; 
-  }
-  .hero h1 {
-    /* Making sure the text doesn't look too cramped on small screens */
-    font-size: 2.2rem;
-    line-height: 1.2;
-}
+
 
 /* ROOM CARDS */
 .image-zoom-container {
