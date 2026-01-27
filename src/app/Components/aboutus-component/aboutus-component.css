@@ -31,7 +31,29 @@
 
 .image-zoom-container {
   overflow: hidden;
-  height: 350px;
+  height: auto;
+  width: 100%;
+  position: relative;
+}
+.about-img {
+  width: 100%;
+  height: auto; /* Force the image to match container height */
+  object-position: center; /* Keeps the middle of the photo visible */
+  display: block;
+  object-fit: inherit;
+  
+}
+
+@media (max-width: 768px) {
+  .image-zoom-container {
+    height: auto; /* Adjusted height for mobile tablets */
+  }
+}
+
+@media (max-width: 480px) {
+  .image-zoom-container {
+    height: auto; /* Compact height for small phones */
+  }
 }
 
 .image-zoom-container:hover .about-img {
