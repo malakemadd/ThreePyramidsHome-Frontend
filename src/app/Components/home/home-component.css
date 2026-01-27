@@ -66,15 +66,19 @@
   background-color: #a8843f;
   transform: scale(1.05);
 }
-
-/* Specific adjustment for mobile view */
-@media (max-width: 767px) {
+/* Small Mobile */
+@media (max-width: 480px) {
   .hero {
-    /* Adjust the 50% (Horizontal) to move the image left or right 
-       50% is center, 0% is far left, 100% is far right */
-    background-position: 60% center !important;
-    
-    /* This ensures the image doesn't scale too small */
+    /* Horizontal 60%, Vertical Center (50%) */
+    background-position: 60% 50% !important;
+  }
+}
+
+/* Larger Mobile / Tablets (Bigger mobile view) */
+@media (min-width: 481px) and (max-width: 767px) {
+  .hero {
+    /* Horizontal 60%, Vertical 20% (This pulls the image TOPWARDS) */
+    background-position: 60% 20% !important;
     background-size: cover;
   }
 }
