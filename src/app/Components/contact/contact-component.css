@@ -1,5 +1,19 @@
 /* contact HERO */
-.contact-hero {
+
+
+/* Small Phones */
+@media (max-width: 480px) {
+  .contact-hero {
+    height: 20vh; /* Even smaller for tiny screens */
+  }
+}
+.contact-hero h1 {
+  font-family: 'Gravitas One', serif;
+  text-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+}
+
+/* ROOMS HERO */
+.contcact-hero {
   height: 60vh;
   /* Matching homepage gradient and overlay style */
   background: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), 
@@ -28,6 +42,8 @@
   font-family: 'Gravitas One', serif;
   text-shadow: 2px 2px 10px rgba(0,0,0,0.3);
 }
+
+
 /* ACTION CARDS */
 .action-card {
   border-radius: 20px;
