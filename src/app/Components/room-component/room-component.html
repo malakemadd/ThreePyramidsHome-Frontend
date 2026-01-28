@@ -14,8 +14,8 @@
         
         <div class="image-zoom-container">
           <img [src]="getRoomImageUrl(room)" class="card-img-top" [alt]="room.name">
-          <div class="price-tag">{{ room.price }}$ per person</div>
-          <div class="price-tag">Up to 4 Guests</div>
+         
+          <div class="price-tag">Up to {{ room.capacity }} Guests</div>
         </div>
 
         <div class="card-body p-4 text-center">
