@@ -1,4 +1,4 @@
-/* ABOUT HERO */
+/* CONTACT HERO */
 .contact-hero {
   height: 60vh;
   background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), 
@@ -188,11 +188,3 @@
   color: #a8843f;
 }
 
-
-
-/* RESPONSIVE */
-@media (max-width: 768px) {
-  .contact-hero {
-    height: 35vh;
-  }
-}
