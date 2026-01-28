@@ -30,9 +30,9 @@
   <div class="modal-dialog modal-dialog-centered modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-  <h5 class="modal-title">Shared Facilities Gallery</h5>
-  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-</div>
+        <h5 class="modal-title">{{ sharedFacilities[currentSharedIndex]?.name }}</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
       <div class="modal-body text-center">
         <img
           [src]="currentSharedImages[currentSharedIndex]"
@@ -67,42 +67,40 @@
 </section>
 
     <!-- Shared Facilities Section -->
-   <section class="shared-facilities mt-5">
-  <h3 class="fw-bold text-gold mb-4">Shared Facilities</h3>
+    <section class="shared-facilities mt-5">
+      <h3 class="fw-bold text-gold mb-4">Shared Facilities</h3>
 
-  <div class="card shared-area-card h-100 p-4 shadow-sm rounded-4 text-center">
-    <div class="card-icon mb-3 fs-2">🏢</div>
-    <h5 class="fw-bold">Guest Shared Space</h5>
-    <p class="text-muted small mb-2">
-      All guests have access to the following shared facilities:
-    </p>
+      <div class="card shared-area-card h-100 p-4 shadow-sm rounded-4 text-center">
+        <div class="card-icon mb-3 fs-2">🏢</div>
+        <h5 class="fw-bold">Guest Shared Space</h5>
+        <p class="text-muted small mb-2">
+          All guests have access to the following shared facilities:
+        </p>
+        <ul class="list-unstyled text-start mb-3">
+          <li>✔ Fully equipped shared kitchen</li>
+          <li>✔ Dining area</li>
+          <li>✔ Beverage corner</li>
+          <li>✔ Laundry area</li>
+        </ul>
 
-    <ul class="list-unstyled text-start mb-3">
-      <li *ngFor="let facility of sharedFacilities">
-        ✔ {{ facility.name }}
-      </li>
-    </ul>
+        <div class="d-flex flex-wrap gap-2 justify-content-center mt-3">
+          <img src="kitchen1.jpeg" width="200" height="170" class="rounded shadow-sm" style="object-fit: cover;">
+          <img src="3.jpeg" width="200" height="170" class="rounded shadow-sm" style="object-fit: cover;">
+          <img src="4.jpeg" width="200" height="170" class="rounded shadow-sm" style="object-fit: cover;">
+          <!-- <img src="7.jpeg" width="150" height="100" class="rounded shadow-sm" style="object-fit: cover;"> -->
+        </div>
 
-    <div class="d-flex flex-wrap gap-2 justify-content-center mt-3">
-      <ng-container *ngFor="let facility of sharedFacilities; let facilityIndex = index">
-        <img 
-          *ngFor="let imgPath of facility.images" 
-          [src]="imgPath" 
-          width="200" 
-          height="170" 
-          class="rounded shadow-sm" 
-          style="object-fit: cover; cursor: pointer;"
-          (click)="openSharedGallery(facilityIndex)"
-          [alt]="facility.name"
-        >
-      </ng-container>
-    </div>
-
-    <button class="btn btn-outline-gold mt-3" (click)="openSharedGallery(0)">
-      View All Shared Facility Images
-    </button>
-  </div>
-</section>
+        <!-- View More / Gallery Link -->
+       <div class="d-flex flex-wrap gap-2 justify-content-center mt-3">
+  <button 
+    *ngFor="let facility of sharedFacilities; let i = index" 
+    class="btn btn-outline-gold mt-2" 
+    (click)="openSharedGallery(i)">
+    View All Shared Facility Images
+  </button>
+</div>
+      </div>
+    </section>
 
   </div>
 
