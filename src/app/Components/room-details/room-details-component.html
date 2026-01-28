@@ -92,12 +92,9 @@
 
         <!-- View More / Gallery Link -->
        <div class="d-flex flex-wrap gap-2 justify-content-center mt-3">
-  <button
-    *ngFor="let facility of sharedFacilities; let i = index" 
-    class="btn btn-outline-gold mt-2" 
-    (click)="openSharedGallery(i)">
-    View {{ facility.name }} Gallery
-  </button>
+  <button class="btn btn-outline-gold mt-3" (click)="openAllFacilitiesGallery()">
+  View All Shared Facility Images
+</button>
 </div>
       </div>
     </section>

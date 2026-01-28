@@ -209,7 +209,28 @@ deleteReview(reviewId: number): void {
     if (page < 1 || page > this.totalPages) return;
     this.currentPage = page;
   }
+openAllFacilitiesGallery() {
+  // 1. Initialize an empty array for all images
+  const allImages: string[] = [];
 
+  // 2. The Loop: Iterate over each facility and add its images to our list
+  this.sharedFacilities.forEach(facility => {
+    facility.images.forEach(img => {
+      allImages.push(img);
+    });
+  });
+
+  // 3. Update the gallery state
+  this.currentSharedImages = allImages;
+  this.currentSharedIndex = 0;
+
+  // 4. Open the modal
+  const modalElement = document.getElementById('sharedGalleryModal');
+  if (modalElement) {
+    const modal = new bootstrap.Modal(modalElement);
+    modal.show();
+  }
+}
   nextPage(): void { if (this.currentPage < this.totalPages) this.currentPage++; }
   prevPage(): void { if (this.currentPage > 1) this.currentPage--; }
 
