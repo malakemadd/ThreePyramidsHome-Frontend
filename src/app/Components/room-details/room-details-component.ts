@@ -51,12 +51,12 @@ export class RoomDetailsComponent implements OnInit {
     {
       name: 'Beverage Corner',
       description: 'Refreshments and beverages available 24/7.',
-      images: ['16.jpeg','17.jpeg','18.jpeg','19.jpeg','20.jpeg']
+      images: ['16.jpeg','17.jpeg','18.jpeg','19.jpeg','20.jpeg','28.jpeg','29.jpeg','30.jpeg']
     },
     {
       name: 'Laundry Area',
       description: 'Self-service laundry available for guests.',
-      images: ['21.jpeg', '22.jpeg','23.jpeg','24.jpeg','25.jpeg','26.jpeg','27.jpeg']
+      images: ['21.jpeg', '22.jpeg','23.jpeg','24.jpeg','25.jpeg','26.jpeg','27.jpeg','31.jpeg']
     }
   ];
 
